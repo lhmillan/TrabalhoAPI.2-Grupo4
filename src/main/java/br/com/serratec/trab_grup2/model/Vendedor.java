@@ -6,6 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -14,8 +17,12 @@ public class Vendedor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
+	@NotBlank(message = "Nome nao pode estar vazio")
 	protected String nome;
+	@NotBlank(message = "Email nao pode estar vazio")
+	@Email(message = "Email invalido")
 	protected String email;
+	@Size(max = 1621, message = "insira um valor acima do salario minimo")
 	protected Double salario;
 	
 	public Long getId() {
