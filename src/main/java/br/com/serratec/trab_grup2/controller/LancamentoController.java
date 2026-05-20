@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.serratec.trab_grup2.dto.LancamentoVendasResponseDTO;
 import br.com.serratec.trab_grup2.model.LancamentoVendas;
 import br.com.serratec.trab_grup2.service.LancamentoService;
 
@@ -34,8 +35,9 @@ public class LancamentoController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public LancamentoVendas InserirLancamento(@RequestBody LancamentoVendas vendas) {
+	public LancamentoVendasResponseDTO InserirLancamento(@RequestBody LancamentoVendas vendas) {
 		return service.inserirLancamento(vendas);
 	}
+	
 	
 }

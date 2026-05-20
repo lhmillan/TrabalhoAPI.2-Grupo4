@@ -2,12 +2,18 @@ package br.com.serratec.trab_grup2.dto;
 
 import java.time.LocalDate;
 
-public class LancamentoVendasResponseDTO {
+public class LancamentoVendasResponseDTO { //request
     private LocalDate dataVenda;
     private Double valorVenda;
     private String nomeVendedor;
+    
+    public LancamentoVendasResponseDTO(LocalDate dataVenda, Double valorVenda, String nomeVendedor) {
+		this.dataVenda = dataVenda;
+		this.valorVenda = valorVenda;
+		this.nomeVendedor = nomeVendedor;
+	}
 
-    public LocalDate getDataVenda() {
+	public LocalDate getDataVenda() {
         return dataVenda;
     }
 
