@@ -1,7 +1,16 @@
 package br.com.serratec.trab_grup2.config;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.servers.Server;
 
 @Configuration
 public class OpenApiConfig {
@@ -11,11 +20,8 @@ public class OpenApiConfig {
     
     @Value("${dominio.openapi.prod-url}")
     private String prodUrl;
-	
-    
-    /*
-     * 
-     *  @Bean
+      
+     @Bean
     public OpenAPI myOpenAPI() {
         Server devServer = new Server();
         devServer.setUrl(devUrl);
@@ -34,6 +40,5 @@ public class OpenApiConfig {
                 .license(apacheLicense);
         return new OpenAPI().info(info).servers(List.of(devServer, prodServer));
     }
-     * 
-     * */
+ 
 }
