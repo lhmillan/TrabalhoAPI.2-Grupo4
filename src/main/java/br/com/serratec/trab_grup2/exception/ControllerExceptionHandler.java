@@ -12,8 +12,10 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 @ControllerAdvice
 public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
@@ -39,4 +41,12 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 	return super.handleExceptionInternal(ex, er, headers, status, request);
     }
 
+@Override
+    protected @Nullable ResponseEntity<Object> handleNoResourceFoundException(NoResourceFoundException ex,
+        HttpHeaders headers, HttpStatusCode status, WebRequest request){
+    	
+		ErroResposta er = new ErroResposta(status.value(), "Existem erros!" + ex.getMessage(), LocalDateTime.now());
+	
+	return super.handleExceptionInternal(ex, er, headers, status, request);
+    }
 }
